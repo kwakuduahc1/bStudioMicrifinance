@@ -2,6 +2,40 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageId>btudio.saving.loans.template</PackageId>
+    <Authors>Ibrahim Kwaku Duah</Authors>
+    <Company>bStudio</Company>
+    <Product>bStudio Savings and Loans</Product>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>bStudio.pfx</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <NeutralLanguage>en-GH</NeutralLanguage>
+    <PackageLicenseUrl>http://github.com</PackageLicenseUrl>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.entityframeworkcore" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>
