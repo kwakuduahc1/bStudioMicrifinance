@@ -1,10 +1,11 @@
-﻿using BSSL.ObjectModels;
+﻿using BSSL;
+using BSSL.ObjectModels;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BSSL.DomainModels
+namespace bStudioBanker.Repositories
 {
     public class AccountTypesTransactor : ITransactor<AccountTypes>
     {

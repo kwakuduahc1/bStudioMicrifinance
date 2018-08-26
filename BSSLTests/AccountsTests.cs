@@ -1,23 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using Xunit;
-using BSSL.DomainModels;
-using BSSL.ObjectModels;
 using System.Collections.Generic;
 using System.Linq;
+using bStudioBanker.Repositories;
+using BSSL.ObjectModels;
+using bStudioBanker.Data;
 
 namespace BSSLTests
 {
     public class AccountsTests
     {
-        readonly DbContextOptions<AppDbConext> dbContextOptions;
         AccountsTransactor transactor;
         Guid guid = Guid.NewGuid();
         readonly Accounts accounts;
         public AccountsTests()
         {
-            dbContextOptions = new DbContextOptions<AppDbConext>();
-            transactor = new AccountsTransactor(new AppDbConext(dbContextOptions));
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseInMemoryDatabase("accounts");
+            transactor = new AccountsTransactor(new ApplicationDbContext(optionsBuilder.Options));
             accounts = new Accounts
             {
                 AccountNumber = "1234567",

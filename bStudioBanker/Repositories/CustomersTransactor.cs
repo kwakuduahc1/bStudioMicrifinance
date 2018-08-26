@@ -1,17 +1,18 @@
-﻿using BSSL.ObjectModels;
+﻿using BSSL;
+using BSSL.ObjectModels;
+using bStudioBanker.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BSSL.DomainModels
+namespace bStudioBanker.Repositories
 {
     public class CustomersTransactor : ITransactor<Customers>
     {
-        private readonly DbContext db;
+        private readonly ApplicationDbContext db;
 
-        public CustomersTransactor(DbContext context) => db = context;
+        public CustomersTransactor(ApplicationDbContext context) => db = context;
 
         public void Add(Customers obj) => db.Add(obj);
 
